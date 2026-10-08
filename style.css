@@ -1,0 +1,501 @@
+/* ==========================================================================
+   바이브 카페 (Vibe Cafe) - 스타일시트 (style.css)
+   [테마] 🌿 포레스트 말차 & 세이지 그린 (눈이 편안한 힐링 테마)
+   ========================================================================== */
+
+/* 기본 리셋 및 전역 박스 사이징 설정 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 전체 바디 스타일 (눈이 편안한 소프트 세이지 크림 배경) */
+body {
+  font-family: '맑은 고딕', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f2f6f3; /* 부드럽고 차분한 세이지 크림 */
+  /* ☕ 이모지가 선명하게 보이도록 opacity를 높인 배경 패턴 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='24' opacity='0.42'%3E☕%3C/text%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 80px 80px;
+  animation: moveBackgroundGrid 12s ease-in-out infinite; /* 움직임이 한눈에 보이도록 부드러운 속도로 조절 */
+  color: #27272a; /* 눈이 편안한 딥 차콜 */
+  line-height: 1.5;
+  padding: 30px 16px;
+  min-height: 100vh;
+}
+
+/* 배경 격자가 여러 대각선 방향으로 주기적으로 방향을 바꾸며 흐르는 키프레임 */
+@keyframes moveBackgroundGrid {
+  0% {
+    background-position: 0px 0px;
+  }
+  25% {
+    background-position: -80px 80px;
+  }
+  50% {
+    background-position: 80px 80px;
+  }
+  75% {
+    background-position: 80px -80px;
+  }
+  100% {
+    background-position: 0px 0px;
+  }
+}
+
+/* 상단 카페 헤더 영역 */
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* 카페 로고 스타일 및 천천히 떨어지는 애니메이션 */
+.header .logo {
+  display: inline-block;
+  font-size: 46px;
+  line-height: 1;
+  margin-bottom: 8px;
+  animation: dropDown 1.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* 로고가 위에서 천천히 떨어져 부드럽게 안착하는 키프레임 */
+@keyframes dropDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(4px);
+  }
+  80% {
+    transform: translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header .title {
+  color: #1e3a2b; /* 깊이 있는 딥 포레스트 그린 */
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+
+.header .subtitle {
+  color: #4b6354; /* 차분한 세이지 올리브 */
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+/* 주문서 컨테이너 카드 */
+.order-container {
+  max-width: 520px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(30, 58, 43, 0.07); /* 부드럽고 은은한 그림자 */
+  border: 1px solid #e2eade;
+  padding: 28px 24px;
+}
+
+/* 입력 항목 폼 그룹 */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* 필드 레이블 기본 스타일 */
+.form-group > label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e3a2b;
+  margin-bottom: 8px;
+}
+
+/* 필수 항목 표시 (*) */
+.required {
+  color: #dc2626;
+  margin-left: 2px;
+}
+
+/* 텍스트, 전화번호, 숫자, 셀렉트 드롭다운, 텍스트에리어 입력칸 공통 스타일 */
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #27272a;
+  background-color: #ffffff;
+  border: 1px solid #cbd7cb;
+  border-radius: 8px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 텍스트에리어 리사이즈 및 기본 여백 */
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* 입력 필드 포커스 시 말차 그린 테두리 및 은은한 그림자 */
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #284e3a;
+  box-shadow: 0 0 0 3px rgba(40, 78, 58, 0.15);
+}
+
+/* 라디오 & 체크박스 그룹 정렬 */
+.radio-group,
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  align-items: center;
+  padding-top: 4px;
+}
+
+/* 라디오/체크박스 개별 라벨 스타일 */
+.radio-group label,
+.checkbox-group label {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: #3f5045;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 라디오/체크박스 인풋 포인트 컬러 및 여백 */
+.radio-group input[type="radio"],
+.checkbox-group input[type="checkbox"] {
+  margin-right: 6px;
+  cursor: pointer;
+  accent-color: #284e3a; /* 포레스트 그린 테마 컬러 */
+  width: 16px;
+  height: 16px;
+}
+
+/* 예상 금액 표시 영역 */
+.price-display-area {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e3a2b;
+  background-color: #f2f6f3;
+  border: 1px solid #e0ebe2;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 24px 0 20px;
+}
+
+#totalPrice {
+  color: #284e3a;
+}
+
+/* 버튼 그룹 컨테이너 */
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+/* 버튼 공통 스타일 */
+.button-group button {
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button-group button:active {
+  transform: translateY(1px);
+}
+
+/* 주문하기 버튼 (차분하고 세련된 말차 포레스트 그린) */
+#submitBtn {
+  flex: 2;
+  background-color: #284e3a;
+  color: #ffffff;
+  border: 1px solid #284e3a;
+}
+
+#submitBtn:hover {
+  background-color: #35674c;
+  border-color: #35674c;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(40, 78, 58, 0.22);
+}
+
+/* 다시 작성 버튼 */
+#resetBtn {
+  flex: 1;
+  background-color: #ffffff;
+  color: #284e3a;
+  border: 1px solid #284e3a;
+}
+
+#resetBtn:hover {
+  background-color: #f2f6f3;
+}
+
+/* 주문 확인 메시지 영역 (편안한 라이트 그린) */
+.order-confirmation {
+  margin-top: 24px;
+  padding: 18px 20px;
+  background-color: #edf7ee;
+  color: #205731;
+  border: 1px solid #c9e6ce;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* 요소 숨김 처리 (hidden 속성 및 .hidden 클래스 지원) */
+[hidden],
+.hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+   탭 네비게이션 스타일 (말차 그린)
+   ========================================================================== */
+.tab-nav {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #e0ebe2;
+  margin-bottom: 22px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: #799283; /* 선택 안 된 탭 */
+  padding: 10px 18px;
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+
+.tab-btn:hover {
+  color: #284e3a;
+}
+
+/* 선택된 활성 탭: 말차 그린 + 밑줄 */
+.tab-btn.active {
+  color: #284e3a;
+  border-bottom: 3px solid #284e3a;
+}
+
+/* 주문 건수 둥근 배지 */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #284e3a;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+/* 주문 접수 시 배지가 통통 튀는 애니메이션 클래스 */
+.badge.bounce {
+  animation: bounceBadge 0.6s ease-in-out;
+}
+
+/* 배지 바운스 키프레임 애니메이션 */
+@keyframes bounceBadge {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.45) translateY(-3px);
+  }
+  50% {
+    transform: scale(0.9) translateY(1px);
+  }
+  70% {
+    transform: scale(1.2) translateY(-2px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ==========================================================================
+   주문 내역 (History) 카드 목록 스타일 (그린 테마)
+   ========================================================================== */
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 주문 내역 1건 카드 (소프트 세이지 카드 + 왼쪽 딥 그린 세로줄) */
+.order-card {
+  position: relative;
+  background-color: #f7faf8;
+  border: 1px solid #e0ebe2;
+  border-left: 4px solid #284e3a; /* 왼쪽에 말차 그린 세로줄 */
+  border-radius: 8px;
+  padding: 14px 16px;
+  padding-right: 60px;
+  box-shadow: 0 2px 6px rgba(30, 58, 43, 0.04);
+}
+
+/* 1줄: #1 홍길동님 · 5,000원 */
+.order-card-header {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e3a2b;
+  margin-bottom: 4px;
+}
+
+/* 2줄: 카페라떼 M사이즈 (샷 추가) 1잔 */
+.order-card-body {
+  font-size: 14px;
+  color: #3f5045;
+  margin-bottom: 4px;
+}
+
+/* 3줄: 요청사항 · 주문 시간 */
+.order-card-footer {
+  font-size: 12px;
+  color: #799283;
+}
+
+/* 카드 오른쪽 상단 주문 취소 버튼 */
+.order-cancel-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: transparent;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.order-cancel-btn:hover {
+  background-color: #fef2f2;
+  border-color: #dc2626;
+}
+
+/* 주문 내역이 없을 때 안내 메시지 */
+.empty-history-msg {
+  text-align: center;
+  padding: 40px 16px;
+  color: #799283;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* 주문 내역 하단 요약 및 전체 삭제 푸터 */
+.history-footer {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e0ebe2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.history-summary {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e3a2b;
+}
+
+/* 음료별 판매 수량 요약 문구 */
+.drink-summary {
+  font-size: 13px;
+  color: #799283;
+  margin-top: 4px;
+}
+
+/* 내역 모두 지우기 버튼 */
+.clear-all-btn {
+  background-color: #ffffff;
+  color: #799283;
+  border: 1px solid #cbd7cb;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-all-btn:hover {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border-color: #dc2626;
+}
+
+/* 모바일 및 작은 화면 반응형 미디어 쿼리 */
+@media (max-width: 480px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  .order-container {
+    padding: 20px 16px;
+  }
+
+  .header .title {
+    font-size: 24px;
+  }
+
+  .header .logo {
+    font-size: 40px;
+  }
+
+  .price-display-area {
+    font-size: 20px;
+    padding: 14px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .button-group button {
+    width: 100%;
+  }
+}
